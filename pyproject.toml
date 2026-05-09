@@ -1,0 +1,84 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codesprint"
+version = "1.0.0"
+description = "🚀 CodeSprint - Lightweight Multi-Language Code Snippet Intelligent Runner CLI | 轻量级多语言代码片段智能运行器 - Zero dependencies, auto language detection, sandbox execution, beautiful TUI output"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+authors = [
+    {name = "SOLO Agent", email = "solo-agent@github.com"}
+]
+keywords = [
+    "cli", "code-runner", "snippet", "executor", "playground",
+    "multi-language", "python", "javascript", "typescript", "go", "rust",
+    "terminal", "tui", "developer-tools", "productivity"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Interpreters",
+    "Topic :: Terminals",
+    "Topic :: Utilities",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+codesprint = "codesprint.cli:main"
+cs = "codesprint.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/gitstq/codesprint"
+Documentation = "https://github.com/gitstq/codesprint#readme"
+Repository = "https://github.com/gitstq/codesprint"
+Issues = "https://github.com/gitstq/codesprint/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+codesprint = ["py.typed"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38", "py39", "py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
